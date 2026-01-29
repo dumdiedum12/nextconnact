@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextConnect Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <p id="partnerCountry"></p>
+  <p id="stats">👩 Frauen: 0 | 👨 Männer: 0 | 🧑 Andere: 0</p>
+  <p id="countdown"></p>
+
+  <video id="local" autoplay muted playsinline></video>
+  <video id="remote" autoplay playsinline></video><br>
+
+  <button class="next" onclick="next()">Next ▶</button>
+  <button class="option" onclick="toggleCamera()">📷 Kamera an/aus</button>
+  <button class="option" onclick="switchCamera()">🔄 Kamera wechseln</button><br>
+
+  <input id="msg" placeholder="Nachricht...">
+  <button onclick="sendMessage()">Senden</button>
+
+  <div id="chat"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="chat.js"></script>
+</body>
+</html>
