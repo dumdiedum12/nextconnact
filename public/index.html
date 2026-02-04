@@ -5,10 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextConnect</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Design für den deaktivierten Button */
+        .disabled {
+            opacity: 0.5;
+            pointer-events: none; /* Macht den Link unklickbar */
+            background-color: gray !important;
+        }
+    </style>
 </head>
 <body>
     <h1>NextConnect</h1>
     <p>Live Videochat. Anonym. Weltweit.</p>
-    <a href="mode.html" class="start-btn">Start</a>
+
+    <div style="margin: 20px 0;">
+        <input type="checkbox" id="ageCheck">
+        <label for="ageCheck">Ich bin mindestens 18 Jahre alt.</label>
+    </div>
+
+    <a href="mode.html" id="startBtn" class="start-btn disabled">Start</a>
+
+    <script>
+        const ageCheck = document.getElementById('ageCheck');
+        const startBtn = document.getElementById('startBtn');
+
+        // Prüfen, ob die Checkbox geklickt wurde
+        ageCheck.addEventListener('change', () => {
+            if (ageCheck.checked) {
+                startBtn.classList.remove('disabled'); // Aktivieren
+            } else {
+                startBtn.classList.add('disabled'); // Wieder deaktivieren
+            }
+        });
+    </script>
 </body>
 </html>

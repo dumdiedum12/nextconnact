@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modus wählen - NextConnect</title>
+    <title>NextConnect - Videochat</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #video-grid { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; }
+        video { width: 90%; max-width: 400px; background: black; border-radius: 10px; }
+        #localVideo { border: 2px solid #007bff; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Wähle einen Modus</h1>
-        <div class="button-group">
-            <button id="unmoderatedBtn">Unmoderiert</button>
-            <button id="moderatedBtn">Moderiert</button>
-        </div>
-        <p id="statusText" style="margin-top: 20px; color: #ccc;"></p>
+    <h1>Wähle einen Modus</h1>
+    
+    <div id="video-grid">
+        <video id="localVideo" autoplay muted playsinline></video>
+        <video id="remoteVideo" autoplay playsinline></video>
     </div>
+
+    <div class="button-group">
+        <button id="unmoderatedBtn">Unmoderiert</button>
+        <button id="moderatedBtn">Moderiert</button>
+    </div>
+
+    <p id="statusText" style="color: gray; margin-top: 10px;"></p>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="app.js"></script>
