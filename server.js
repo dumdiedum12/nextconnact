@@ -42,6 +42,6 @@ io.on("connection", (socket) => {
 
 // Port für Vercel dynamisch setzen
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server läuft auf Port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
