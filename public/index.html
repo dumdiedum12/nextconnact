@@ -3,40 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextConnect</title>
+    <title>NextConnect - Auswahl</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Design für den deaktivierten Button */
-        .disabled {
-            opacity: 0.5;
-            pointer-events: none; /* Macht den Link unklickbar */
-            background-color: gray !important;
-        }
-    </style>
 </head>
 <body>
     <h1>NextConnect</h1>
-    <p>Live Videochat. Anonym. Weltweit.</p>
-
-    <div style="margin: 20px 0;">
-        <input type="checkbox" id="ageCheck">
-        <label for="ageCheck">Ich bin mindestens 18 Jahre alt.</label>
+    <p>Wähle deine Altersgruppe:</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 15px; align-items: center; margin-top: 30px;">
+        <a href="mode.html?age=adult" class="start-btn" style="background-color: #007bff;">Ich bin 18+</a>
+        <a href="mode.html?age=minor" class="start-btn" style="background-color: #28a745;">Ich bin unter 18</a>
     </div>
-
-    <a href="mode.html" id="startBtn" class="start-btn disabled">Start</a>
-
-    <script>
-        const ageCheck = document.getElementById('ageCheck');
-        const startBtn = document.getElementById('startBtn');
-
-        // Prüfen, ob die Checkbox geklickt wurde
-        ageCheck.addEventListener('change', () => {
-            if (ageCheck.checked) {
-                startBtn.classList.remove('disabled'); // Aktivieren
-            } else {
-                startBtn.classList.add('disabled'); // Wieder deaktivieren
-            }
-        });
-    </script>
+    
+    <p style="font-size: 12px; margin-top: 20px; color: gray;">Bitte sei ehrlich. Sicherheit geht vor.</p>
 </body>
 </html>
