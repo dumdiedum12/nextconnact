@@ -1,12 +1,21 @@
-const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
-const path = require('path');
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Diese zwei Zeilen sind wichtig, damit der Server 
+// den "public"-Ordner auf dem Online-Host findet
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+    cors: { origin: "*" }
+});
 
+// Statische Dateien aus dem "public" Ordner laden
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Zwei getrennte Wartelisten für maximale Sicherheit
@@ -44,8 +53,12 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        if (waitingAdult && waitingAdult.id === socket.id) waitingAdult = null;
-        if (waitingMinor && waitingMinor.id === socket.id) waitingMinor = null;
+        if (waitingAdult && waitingAdult.id === socket.id) {
+            waitingAdult = null;
+        }
+        if (waitingMinor && waitingMinor.id === socket.id) {
+            waitingMinor = null;
+        }
         console.log('Nutzer getrennt');
     });
 });
